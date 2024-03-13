@@ -3,11 +3,27 @@ import plotly.express as px
 import os
 from datetime import datetime
 from timeit import Timer
-from hash_time_graph import hash_time_graph
+
 
 class HashTimeGraph:
     DEFAULT_TEXT_SIZES = [10, 100, 1000, 10000]
 
+    @staticmethod
+    def __generate_hash(text: str) -> str:
+        """
+            Method returning hash of a text using the sha256 algorithm.
+
+            Parameters:
+            ----------------------------
+                text (str) -> text to be hashed
+
+            Returns:
+            ----------------------------
+                str -> sha256 hash of a given text
+        """
+        return hashlib.sha256(text.encode()).hexdigest()
+
+    @staticmethod
     def hash_time(text_sizes: list = DEFAULT_TEXT_SIZES) -> dict:
         """
             Method returing time of hashing operation on texts of given lengths.
@@ -15,7 +31,7 @@ class HashTimeGraph:
             Parameters:
             ----------------------------
                 text_sizes (list) -> list of text sizes for hashing operation
-            
+
             Returns:
             ----------------------------
                 dict:
@@ -25,14 +41,12 @@ class HashTimeGraph:
         """
         time_results = []
         for size in text_sizes:
-            message = "x" * int(size)
-            generate_hash = lambda message=message: hashlib.sha256(message.encode()).hexdigest()
-            t = Timer(generate_hash)
+            text = "x" * int(size)
+            t = Timer(lambda text=text: HashTimeGraph.__generate_hash(text=text))
             time_results.append(t.timeit(number=1000))
-
         return {key: value for key, value in zip(text_sizes, time_results)}
 
-
+    @staticmethod
     def hash_time_graph(hash_time_results: dict, as_image: bool = False, out_path: str = None):
         """
             Method creating graph for given time results of hashing texts.

@@ -1,5 +1,6 @@
 import hashlib
 
+
 class HashFiles:
     # Ubuntu 22.04.4 LTS (Jammy Jellyfish) (accessed on: 13.03.2024)
     UBUNTU_DESKTOP_HASH = "071d5a534c1a2d61d64c6599c47c992c778e08b054daecc2540d57929e4ab1fd"
@@ -20,7 +21,6 @@ class HashFiles:
         with open(file=file_path, mode='rb') as file:
             digest = hashlib.file_digest(file, "sha256")
         return digest.hexdigest()
-
 
     @staticmethod
     def check_ubuntu_hash(file_path: str, ubuntu_hash: str = UBUNTU_DESKTOP_HASH) -> bool:
