@@ -73,3 +73,7 @@ class HashTimeGraph:
             fig.write_image(f"{path}/graph_{datetime.now()}.png")
         else:
             fig.show()
+
+
+if __name__ == "__main__":
+    pass
