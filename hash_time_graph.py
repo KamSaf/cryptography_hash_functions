@@ -1,4 +1,4 @@
-import hashlib
+from hashlib import sha256
 import plotly.express as px
 import os
 from datetime import datetime
@@ -21,7 +21,7 @@ class HashTimeGraph:
             ----------------------------
                 str -> sha256 hash of a given text
         """
-        return hashlib.sha256(text.encode()).hexdigest()
+        return sha256(text.encode()).hexdigest()
 
     @staticmethod
     def hash_time(text_sizes: list = DEFAULT_TEXT_SIZES) -> dict:

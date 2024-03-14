@@ -1,9 +1,9 @@
-import os
+from os import path
 import pytest
 
 
 def run_tests():
-    test_directory = os.path.join(os.path.dirname(__file__), "tests")
+    test_directory = path.join(path.dirname(__file__), "tests")
     pytest.main(["-v", "-s", "--disable-warnings", test_directory])
 
 

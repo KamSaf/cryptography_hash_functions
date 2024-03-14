@@ -1,4 +1,4 @@
-import hashlib
+from hashlib import file_digest
 
 
 class HashFile:
@@ -19,7 +19,7 @@ class HashFile:
                 str -> sha256 hash of a given file
         """
         with open(file=file_path, mode='rb') as file:
-            digest = hashlib.file_digest(file, "sha256")
+            digest = file_digest(file, "sha256")
         return digest.hexdigest()
 
     @staticmethod
