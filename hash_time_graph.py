@@ -67,7 +67,6 @@ class HashTimeGraph:
 
         if as_image:
             path = str(out_path) + ("graphs/") if out_path else "graphs/"
-            print(path)
             if not os.path.exists(path):
                 os.mkdir(path)
             fig.write_image(f"{path}/graph_{datetime.now()}.png")

@@ -1,5 +1,5 @@
 from hash_time_graph import HashTimeGraph as hash
-from os import listdir
+from os import listdir, mkdir, path
 from shutil import rmtree
 
 
@@ -24,9 +24,11 @@ class TestHashText:
             assert isinstance(item, float)
 
     def test_hash_time_graph(self):
-        TEST_GRAPH_FILE_PATH = "tests/test_graphs"
+        TEST_GRAPH_FILE_PATH = "tests/test_graphs/"
+        if not path.exists(TEST_GRAPH_FILE_PATH):
+            mkdir(TEST_GRAPH_FILE_PATH)
         hash.hash_time_graph(hash.hash_time(), as_image=True, out_path=TEST_GRAPH_FILE_PATH)
-        for file_name in listdir(TEST_GRAPH_FILE_PATH + '/graphs/'):
+        for file_name in listdir(TEST_GRAPH_FILE_PATH + 'graphs/'):
             file_exists = file_name.startswith('graph_') and file_name.endswith('.png')
         rmtree(TEST_GRAPH_FILE_PATH)
         assert file_exists is True
