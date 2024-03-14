@@ -22,10 +22,12 @@ class HashText:
                     Key (str) -> name of the hashing algorithm.
                     Value (tuple) -> tuple containing: (Byte hash value, Hexadecimal hash value, Hash tim,)
         """
+        if not isinstance(text, bytes):
+            text = text.encode()
         result = {}
         for algorithm in hashlib.algorithms_available:
             h = hashlib.new(algorithm)
-            h.update(text.encode())
+            h.update(text)
             start_time = datetime.now()
             try:
                 byte_hash = h.digest()
@@ -36,7 +38,6 @@ class HashText:
             elapsed_time = datetime.now() - start_time
             result[algorithm] = (byte_hash, hex_hash, elapsed_time)
         return result
-
 
     @staticmethod
     def hash_input():

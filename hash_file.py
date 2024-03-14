@@ -1,12 +1,12 @@
 import hashlib
 
 
-class HashFiles:
+class HashFile:
     # Ubuntu 22.04.4 LTS (Jammy Jellyfish) (accessed on: 13.03.2024)
     UBUNTU_DESKTOP_HASH = "071d5a534c1a2d61d64c6599c47c992c778e08b054daecc2540d57929e4ab1fd"
 
     @staticmethod
-    def file_hash(file_path: str) -> str:
+    def hash_file(file_path: str) -> str:
         """
             Method returning hash of a file using the sha256 algorithm.
 
@@ -37,7 +37,7 @@ class HashFiles:
             ----------------------------
                 bool -> True if file is valid, False if not
         """
-        return HashFiles.file_hash(file_path=file_path) == ubuntu_hash
+        return HashFile.hash_file(file_path=file_path) == ubuntu_hash
 
 
 if __name__ == "__main__":
