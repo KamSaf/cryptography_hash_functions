@@ -24,7 +24,7 @@ class TestHashText:
             assert isinstance(item, float)
 
     def test_hash_time_graph(self):
-        TEST_GRAPH_FILE_PATH = "tests/test_graphs/"
+        TEST_GRAPH_FILE_PATH = "src/tests/test_graphs/"
         if not path.exists(TEST_GRAPH_FILE_PATH):
             mkdir(TEST_GRAPH_FILE_PATH)
         hash.hash_time_graph(hash.hash_time(), as_image=True, out_path=TEST_GRAPH_FILE_PATH)
