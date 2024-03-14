@@ -63,7 +63,7 @@ class HashTimeGraph:
                 out_path (str) - path where images/ directory containing graphs will be created
         """
         fig = px.bar(x=hash_time_results.keys(), y=hash_time_results.values(), title='Hashing time of sha256 algorithm:')
-        fig.update_xaxes(type='category', title='Message length').update_yaxes(title='Execution time')
+        fig.update_xaxes(type='category', title='Text length').update_yaxes(title='Execution time')
 
         if as_image:
             path = str(out_path) + ("graphs/") if out_path else "graphs/"
